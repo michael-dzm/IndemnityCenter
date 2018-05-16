@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="layoutManager"
+            type="android.support.v7.widget.LinearLayoutManager" />
+
+        <variable
+            name="adapter"
+            type="com.sh3h.indemnity.ui.adapter.BaseRecyclerViewAdapter"/>
+
+        <variable
+            name="presenter"
+            type="com.sh3h.indemnity.ui.material.address.AddressManagerPresenter"/>
+
+        <variable
+            name="refreshListener"
+            type="android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/color_0176da"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/white">
+
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/swiperefresh_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#EFEFF4"
+                android:onRefreshListener="@{refreshListener}">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="vertical"
+                    app:adapter="@{adapter}"
+                    app:layoutManager="@{layoutManager}" />
+
+            </android.support.v4.widget.SwipeRefreshLayout>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/btn_floating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="16dp"
+                android:src="@mipmap/ic_arrow_up_48px"
+                android:visibility="gone" />
+
+        </android.support.design.widget.CoordinatorLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/text_add_address"
+                android:textColor="@color/button_text_selector"
+                android:background="@drawable/button_selector"
+                android:layout_marginTop="@dimen/margin_5"
+                android:layout_marginLeft="@dimen/margin_30"
+                android:layout_marginRight="@dimen/margin_30"
+                android:layout_marginBottom="@dimen/margin_5"
+                android:onClick="@{presenter.showAddAddressDialog}"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

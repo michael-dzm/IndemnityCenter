@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="duAddress"
+            type="com.sh3h.dataprovider.data.entity.DUAddress" />
+
+        <variable
+            name="presenter"
+            type="com.sh3h.indemnity.ui.material.address.AddressManagerPresenter"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cv_address_manager_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_10"
+        android:layout_marginRight="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_10"
+        android:foreground="?android:attr/selectableItemBackground"
+        card_view:cardCornerRadius="6dp"
+        android:onClick="@{(view) -> presenter.onItemClick(view, duAddress)}">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--body-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_10"
+                android:layout_marginLeft="@dimen/margin_5"
+                android:layout_marginTop="@dimen/margin_10"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/width_50"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="@string/text_address"
+                        android:textColor="@color/color_gray_767676"
+                        android:textSize="@dimen/textsize_16" />
+
+                    <TextView
+                        android:id="@+id/tv_apply_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:text="@{duAddress.addressContent}"
+                        android:textColor="@color/color_gray_767676"
+                        android:textSize="@dimen/textsize_16" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_5"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/cb_is_default"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:checked="@{duAddress.isDefault == 1 ? true : false}"
+                        android:onClick="@{(view) -> presenter.changeDefaultAddress(view,duAddress)}" />
+
+                    <TextView
+                        android:id="@+id/tv_apply_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_10"
+                        android:text="@{duAddress.isDefault == 1 ? @string/text_default_address : @string/text_set_default_address}"
+                        android:textColor="@color/color_gray_767676"
+                        android:textSize="@dimen/textsize_16" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:layout_width="@dimen/width_25"
+                            android:layout_height="@dimen/height_25"
+                            android:background="@drawable/button_edit_selector"
+                            android:onClick="@{(view) -> presenter.showUpdateAddressDialog(view,duAddress)}" />
+
+                        <Button
+                            android:layout_width="@dimen/width_25"
+                            android:layout_height="@dimen/height_25"
+                            android:layout_marginLeft="@dimen/margin_10"
+                            android:layout_marginRight="@dimen/margin_10"
+                            android:background="@drawable/ic_delete_selector"
+                            android:onClick="@{(view) -> presenter.showDeleteAddressDialog(view,duAddress)}" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

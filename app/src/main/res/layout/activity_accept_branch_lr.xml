@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.sh3h.dataprovider.data.entity.DUMultiMedia"/>
+        <variable
+            name="presenter"
+            type="com.sh3h.indemnity.ui.accept.branch.AcceptBranchLRPresenter" />
+        <variable
+            name="acceptCheckSituation"
+            type="java.util.List" />
+        <variable
+            name="acceptLeakSituation"
+            type="java.util.List" />
+        <variable
+            name="acceptLeakChange"
+            type="java.util.List" />
+        <variable
+            name="isStrength"
+            type="boolean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_0176da"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize" />
+
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/swiperefresh_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/cv_network"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_10"
+                            android:layout_marginRight="@dimen/margin_10"
+                            android:layout_marginTop="@dimen/margin_5"
+                            android:layout_marginBottom="@dimen/margin_5"
+                            android:clickable="true"
+                            android:minHeight="@dimen/height_180">
+
+                            <!-- 第一步 -->
+                            <LinearLayout
+                                android:id="@+id/layout_step_one"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:visibility="@{presenter.mCurrentStep == 1 ? View.VISIBLE : View.GONE}">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="@string/text_step_one"
+                                    android:textSize="@dimen/textsize_16"
+                                    android:textColor="@color/color_0176da"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:layout_marginTop="@dimen/margin_10"
+                                    android:textSize="@dimen/textsize_16"
+                                    android:text="@{isStrength ? @string/text_strength_take_photo_step_one : @string/text_airtight_take_photo_step_one}" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/margin_10"
+                                    android:gravity="center"
+                                    android:textSize="@dimen/textsize_16"
+                                    android:text="@string/text_delete_photo_restart_step_one" />
+
+                            </LinearLayout>
+
+                            <!-- 第二步 -->
+                            <LinearLayout
+                                android:id="@+id/layout_step_two"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:visibility="@{presenter.mCurrentStep == 2 || presenter.mCurrentStep == 3 ? View.VISIBLE : View.GONE}">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="@string/text_step_two"
+                                    android:textSize="@dimen/textsize_16"
+                                    android:textColor="@color/color_0176da"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:textSize="@dimen/textsize_16"
+                                    android:layout_marginTop="@dimen/margin_10"
+                                    android:text="@{isStrength ? @string/text_strength_take_photo_step_two : @string/text_airtight_take_photo_step_two}" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/margin_10"
+                                    android:gravity="center"
+                                    android:textSize="@dimen/textsize_16"
+                                    android:text="@string/text_delete_photo_restart_step_two" />
+
+                            </LinearLayout>
+
+                            <!-- 第三步 -->
+                            <LinearLayout
+                                android:id="@+id/layout_step_three"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:visibility="@{presenter.mCurrentStep == 4 || presenter.mCurrentStep == 5 ? View.VISIBLE : View.GONE}">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:minHeight="@dimen/height_45"
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="@dimen/padding_10"
+                                    android:paddingRight="@dimen/padding_10">
+
+                                    <TextView
+                                        android:layout_width="@dimen/width_80"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="right"
+                                        android:text="@string/text_check_situation"
+                                        android:textSize="@dimen/textsize_16" />
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="@dimen/margin_10">
+
+                                        <android.support.v7.widget.AppCompatSpinner
+                                            android:id="@+id/sp_check_situation"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerVertical="true"
+                                            android:entries="@{acceptCheckSituation}"
+                                            android:onItemSelected="@{presenter.onItemSelected}"
+                                            android:enabled="@{!presenter.mIsTimeOut}"
+                                            android:textSize="@dimen/textsize_16" />
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/divide_height_1"
+                                            android:layout_alignParentBottom="true"
+                                            android:layout_marginBottom="@dimen/margin_5"
+                                            android:background="@color/color_gray_666E81" />
+                                    </RelativeLayout>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:minHeight="@dimen/height_45"
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="@dimen/padding_10"
+                                    android:paddingRight="@dimen/padding_10">
+
+                                    <TextView
+                                        android:layout_width="@dimen/width_80"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="right"
+                                        android:text="@string/text_leak_situation"
+                                        android:textSize="@dimen/textsize_16" />
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="@dimen/margin_10">
+
+                                        <android.support.v7.widget.AppCompatSpinner
+                                            android:id="@+id/sp_leak_situation"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerVertical="true"
+                                            android:entries="@{acceptLeakSituation}"
+                                            android:onItemSelected="@{presenter.onItemSelected}"
+                                            android:enabled="@{!presenter.mIsTimeOut}"
+                                            android:textSize="@dimen/textsize_16" />
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/divide_height_1"
+                                            android:layout_alignParentBottom="true"
+                                            android:layout_marginBottom="@dimen/margin_5"
+                                            android:background="@color/color_gray_666E81" />
+                                    </RelativeLayout>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:minHeight="@dimen/height_45"
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="@dimen/padding_10"
+                                    android:paddingRight="@dimen/padding_10">
+
+                                    <TextView
+                                        android:layout_width="@dimen/width_80"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="right"
+                                        android:text="@string/text_leak_change"
+                                        android:textSize="@dimen/textsize_16" />
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="@dimen/margin_10">
+
+                                        <android.support.v7.widget.AppCompatSpinner
+                                            android:id="@+id/sp_leak_change"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_centerVertical="true"
+                                            android:entries="@{acceptLeakChange}"
+                                            android:onItemSelected="@{presenter.onItemSelected}"
+                                            android:enabled="@{!presenter.mIsTimeOut}"
+                                            android:textSize="@dimen/textsize_16" />
+
+                                        <View
+                                            android:layout_width="match_parent"
+                                            android:layout_height="@dimen/divide_height_1"
+                                            android:layout_alignParentBottom="true"
+                                            android:layout_marginBottom="@dimen/margin_5"
+                                            android:background="@color/color_gray_666E81" />
+                                    </RelativeLayout>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </android.support.v7.widget.CardView>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/height_45"
+                            android:paddingLeft="@dimen/padding_10"
+                            android:paddingRight="@dimen/padding_10">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true">
+
+                                <TextView
+                                    android:layout_width="@dimen/width_80"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:gravity="right"
+                                    android:text="@string/text_scene_photo"
+                                    android:textSize="@dimen/textsize_16" />
+
+                                <Button
+                                    android:layout_width="@dimen/width_70"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:background="@null"
+                                    android:drawableLeft="@drawable/ic_camera_selector"
+                                    android:enabled="@{!(presenter.mIsTimeOut || presenter.mCurrentStep == 3)}"
+                                    android:onClick="@{presenter.onCameraClick}"
+                                    android:text="@string/text_button_take_photo"
+                                    android:textColor="@color/button_text_photo_selector" />
+                            </RelativeLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/divide_height_2"
+                                android:layout_alignParentBottom="true"
+                                android:background="@drawable/dotted_line"
+                                android:layerType="software" />
+
+                        </RelativeLayout>
+
+                        <FrameLayout
+                            android:id="@+id/multimedia_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_prompt"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_40"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/margin_10"
+                        android:paddingRight="@dimen/margin_10"
+                        android:background="@color/color_yellow_fafadc"
+                        android:descendantFocusability="blocksDescendants"
+                        android:layout_marginTop="-40dp">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true">
+                            <TextView
+                                android:id="@+id/text_prompt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/btn_hide_prompt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:background="@null"
+                            android:gravity="end|center_vertical"
+                            android:text="@{presenter.mIsTimeOut ? @string/text_restart : @string/text_hide}"
+                            android:onClick="@{presenter.onClick}"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/color_gray_e3e3e3"
+                        android:paddingBottom="@dimen/padding_5"
+                        android:paddingTop="@dimen/padding_5">
+
+                        <Button
+                            android:id="@+id/btn_step_one"
+                            style="@style/circle_text_button"
+                            android:background="@{presenter.mCurrentStep > 1 ? @drawable/button_circle_p :@drawable/button_circle_n}"
+                            android:gravity="center"
+                            android:layout_marginLeft="@dimen/margin_30"
+                            android:text="@string/text_one"
+                            android:onClick="@{presenter.onClick}"/>
+
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/btn_step_two"
+                            android:layout_toRightOf="@+id/btn_step_one"
+                            android:background="@{presenter.mCurrentStep > 1 ? @color/color_0176da : @color/color_gray_d2d2d2}" />
+
+                        <Button
+                            android:id="@+id/btn_step_two"
+                            style="@style/circle_text_button"
+                            android:layout_centerHorizontal="true"
+                            android:background="@{presenter.mCurrentStep > 2 ? @drawable/button_circle_p :@drawable/button_circle_n}"
+                            android:enabled="@{presenter.mCurrentStep > 1}"
+                            android:text="@string/text_two"
+                            android:onClick="@{presenter.onClick}"/>
+
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="1dp"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/btn_step_three"
+                            android:layout_toRightOf="@+id/btn_step_two"
+                            android:background="@{presenter.mCurrentStep > 2 ? @color/color_0176da : @color/color_gray_d2d2d2}" />
+
+                        <Button
+                            android:id="@+id/btn_step_three"
+                            style="@style/circle_text_button"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/margin_30"
+                            android:background="@{presenter.mCurrentStep > 4 ? @drawable/button_circle_p :@drawable/button_circle_n}"
+                            android:enabled="@{presenter.mCurrentStep > 3}"
+                            android:text="@string/text_three"
+                            android:onClick="@{presenter.onClick}"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </android.support.v4.widget.SwipeRefreshLayout>
+
+        </android.support.design.widget.CoordinatorLayout>
+    </LinearLayout>
+</layout>

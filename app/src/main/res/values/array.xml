@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="take_photo">
+        <item>拍摄</item>
+        <item>相册</item>
+    </string-array>
+
+    <string-array name="accept_state">
+        <item>全部</item>
+        <item>未验收</item>
+        <item>施工不合格</item>
+        <item>施工合格</item>
+        <item>强度不合格</item>
+        <item>强度合格</item>
+        <item>气密不合格</item>
+        <item>气密合格</item>
+        <item>工程不合格</item>
+        <item>工程合格</item>
+    </string-array>
+</resources>

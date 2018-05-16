@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="com.sh3h.dataprovider.data.entity.DUMultiMedia"/>
+        <variable
+            name="presenter"
+            type="com.sh3h.indemnity.ui.project.start.entry.StartProjectEntryPresenter"/>
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/padding_10"
+                android:paddingRight="@dimen/padding_10"
+                android:minHeight="@dimen/height_40">
+                <TextView
+                    android:layout_width="@dimen/width_80"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="@dimen/textsize_16"
+                    android:gravity="right"
+                    android:text="@string/text_start_project_date"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_10">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/textsize_16"
+                        android:layout_centerVertical="true"
+                        android:text="@{System.currentTimeMillis()}"/>
+
+                    <ImageButton
+                        android:id="@+id/btn_start_project_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:visibility="invisible"
+                        android:background="@drawable/ic_calendar_selector" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/divide_height_1"
+                        android:layout_alignBottom="@+id/btn_start_project_date"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:background="@color/color_gray_666E81" />
+                </RelativeLayout>
+
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_45"
+                android:paddingLeft="@dimen/padding_10"
+                android:paddingRight="@dimen/padding_10">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_centerVertical="true">
+                    <Button
+                        android:layout_width="@dimen/width_70"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/button_text_selector"
+                        android:background="@drawable/button_selector"
+                        android:text="@string/text_button_photo_type_card"
+                        android:onClick="@{(view) -> presenter.onCameraClick(view, DUMultiMedia.RelateType.START_PROJECT_CARD.getValue())}"/>
+
+                    <Button
+                        android:layout_width="@dimen/width_70"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="@dimen/margin_5"
+                        android:textColor="@color/button_text_selector"
+                        android:background="@drawable/button_selector"
+                        android:text="@string/text_button_photo_type_order"
+                        android:onClick="@{(view) -> presenter.onCameraClick(view, DUMultiMedia.RelateType.START_PROJECT_ORDER.getValue())}"/>
+
+                    <Button
+                        android:layout_width="@dimen/width_70"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="@dimen/margin_5"
+                        android:textColor="@color/button_text_selector"
+                        android:background="@drawable/button_selector"
+                        android:text="@string/text_button_photo_type_nameplate"
+                        android:onClick="@{(view) -> presenter.onCameraClick(view, DUMultiMedia.RelateType.START_PROJECT_NAMEPLATE.getValue())}"/>
+
+                    <Button
+                        android:layout_width="@dimen/width_70"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="@dimen/margin_5"
+                        android:textColor="@color/button_text_selector"
+                        android:background="@drawable/button_selector"
+                        android:text="@string/text_button_photo_type_facility"
+                        android:onClick="@{(view) -> presenter.onCameraClick(view, DUMultiMedia.RelateType.START_PROJECT_FACILITY.getValue())}"/>
+
+                    <Button
+                        android:layout_width="@dimen/width_70"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="@dimen/margin_5"
+                        android:textColor="@color/button_text_selector"
+                        android:background="@drawable/button_selector"
+                        android:text="@string/text_button_photo_type_other"
+                        android:onClick="@{(view) -> presenter.onCameraClick(view, DUMultiMedia.RelateType.START_PROJECT_OTHER.getValue())}"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divide_height_2"
+                    android:background="@drawable/dotted_line"
+                    android:layerType="software"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+            <FrameLayout
+                android:id="@+id/multimedia_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>

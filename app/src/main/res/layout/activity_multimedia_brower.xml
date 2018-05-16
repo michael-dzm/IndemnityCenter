@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="adapter"
+            type="com.sh3h.indemnity.ui.adapter.BaseListAdapter"/>
+        <variable
+            name="multimediaUrl"
+            type="String"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/gallery">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                app:image="@{multimediaUrl}"
+                app:error="@{@drawable/ic_launcher}"/>
+        </RelativeLayout>
+
+        <Gallery
+            android:id="@+id/gallery"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_100"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:spacing="@dimen/space_5"
+            android:paddingTop="@dimen/padding_5"
+            android:paddingBottom="@dimen/padding_5"
+            app:adapter="@{adapter}">
+        </Gallery>
+
+    </RelativeLayout>
+
+</layout>

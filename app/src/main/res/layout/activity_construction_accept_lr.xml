@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="presenter"
+            type="com.sh3h.indemnity.ui.accept.construction.AcceptConstructionLRPresenter" />
+        <variable
+            name="constructionProgram"
+            type="java.util.List"/>
+        <variable
+            name="constructionChange"
+            type="java.util.List"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_0176da"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize" />
+
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cv_network"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginRight="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:clickable="true">
+
+                    <LinearLayout
+                        android:id="@+id/layout_step_three"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:minHeight="@dimen/height_45"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/padding_10"
+                            android:paddingRight="@dimen/padding_10">
+
+                            <TextView
+                                android:layout_width="@dimen/width_80"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="@string/text_construction_program"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="@dimen/margin_10">
+
+                                <android.support.v7.widget.AppCompatSpinner
+                                    android:id="@+id/sp_construction_program"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentLeft="true"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_centerVertical="true"
+                                    android:entries="@{constructionProgram}"
+                                    android:onItemSelected="@{presenter.onItemSelected}"
+                                    android:textSize="@dimen/textsize_16" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/divide_height_1"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_marginBottom="@dimen/margin_5"
+                                    android:background="@color/color_gray_666E81" />
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layout_change_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:minHeight="@dimen/height_45"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/padding_10"
+                            android:paddingRight="@dimen/padding_10">
+
+                            <TextView
+                                android:layout_width="@dimen/width_80"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="@string/text_construction_change"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="@dimen/margin_10">
+
+                                <android.support.v7.widget.AppCompatSpinner
+                                    android:id="@+id/sp_construction_change"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:entries="@{constructionChange}"
+                                    android:onItemSelected="@{presenter.onItemSelected}"
+                                    android:textSize="@dimen/textsize_16" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/divide_height_1"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_marginBottom="@dimen/margin_5"
+                                    android:background="@color/color_gray_666E81" />
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_45"
+                    android:paddingLeft="@dimen/padding_10"
+                    android:paddingRight="@dimen/padding_10">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true">
+
+                        <TextView
+                            android:layout_width="@dimen/width_80"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:gravity="right"
+                            android:text="@string/text_scene_photo"
+                            android:textSize="@dimen/textsize_16" />
+
+                        <Button
+                            android:layout_width="@dimen/width_70"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:background="@null"
+                            android:drawableLeft="@drawable/ic_camera_selector"
+                            android:onClick="@{presenter.onCameraClick}"
+                            android:text="@string/text_button_take_photo"
+                            android:textColor="@color/button_text_photo_selector" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/divide_height_2"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/dotted_line"
+                        android:layerType="software" />
+
+                </RelativeLayout>
+
+                <FrameLayout
+                    android:id="@+id/multimedia_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                </FrameLayout>
+            </LinearLayout>
+        </android.support.design.widget.CoordinatorLayout>
+    </LinearLayout>
+</layout>

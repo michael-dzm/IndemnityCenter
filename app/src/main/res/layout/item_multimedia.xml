@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="multimedia"
+            type="com.sh3h.dataprovider.data.entity.DUMultiMedia" />
+        <variable
+            name="presenter"
+            type="com.sh3h.indemnity.ui.multimedia.MultimediaPresenter"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="@dimen/width_100"
+            android:layout_height="@dimen/height_100"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:descendantFocusability="blocksDescendants"
+            android:onLongClick="@{(view) -> presenter.onLongClick(view, multimedia)}"
+            android:onClick="@{(view) -> presenter.onItemClick(view, multimedia)}">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:error="@{@drawable/ic_launcher}"
+                app:image="@{multimedia.filePath}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:textSize="@dimen/textsize_10"
+                android:text="@{multimedia.fileName}" />
+        </FrameLayout>
+    </LinearLayout>
+
+</layout>

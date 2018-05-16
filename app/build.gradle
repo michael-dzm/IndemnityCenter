@@ -1,0 +1,109 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    //签名
+    signingConfigs {
+        debug {
+        }
+        release {
+            keyAlias 'sh3h_android'
+            keyPassword 'shanghai3h/rd'
+            storeFile file('D:/Signed APK/sh3h_android_keystore')
+            storePassword 'shanghai3h/rd'
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.sh3h.indemnity"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 11
+        versionName "1.1.1"
+        multiDexEnabled = true
+    }
+
+    buildTypes {
+        debug {
+            //显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            versionNameSuffix "-debug"
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+        }
+
+        release {
+            //显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            //zipAlign优化
+            zipAlignEnabled true
+            //移除无用的resources
+            shrinkResources false
+            //混淆
+            minifyEnabled false
+            //混淆配置文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //签名
+            signingConfig signingConfigs.release
+        }
+    }
+
+    //apk重命名
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if(outputFile != null && outputFile.name.endsWith(".apk")){
+                //apk名字
+                def apkName = "IndemnityCenter"
+                //apk版本号
+                def versionCode = defaultConfig.versionCode
+                //build类型
+                def buildType = variant.buildType.name
+                //项目路径
+                def filePath = getProjectDir();
+                output.outputFile = new File(filePath, "${apkName}_${buildType}_${versionCode}.apk")
+            }
+        }
+    }
+
+    repositories {
+        flatDir {
+            dirs '..\\libs'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile "junit:junit:$rootProject.ext.junitVersion"
+    compile "com.android.support:appcompat-v7:$rootProject.ext.supperLibraryVersion"
+    compile "com.android.support:support-annotations:$rootProject.ext.supperLibraryVersion"
+    compile "com.android.support:support-v4:$rootProject.ext.supperLibraryVersion"
+    /** UI依赖库 **/
+    compile "com.android.support:recyclerview-v7:$rootProject.ext.supperLibraryVersion"
+    compile "com.android.support:cardview-v7:$rootProject.ext.supperLibraryVersion"
+    compile "com.android.support:design:$rootProject.ext.supperLibraryVersion"
+    /** dagger依赖库 **/
+    compile "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'org.glassfish:javax.annotation:10.0-b28'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile project(':dataprovider')
+    compile(name: 'swipebacklibrary', ext: 'aar')
+    compile project(path: ':zxing')
+    compile 'com.sh3h.pulllayout:pulllayout:1.0.4'
+}

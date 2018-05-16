@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="android.text.TextUtils"/>
+        <import type="com.sh3h.dataprovider.data.entity.enums.Permission"/>
+        <variable
+            name="presenter"
+            type="com.sh3h.indemnity.ui.upload.UploadManagerPresenter" />
+        <variable
+            name="roles"
+            type="String"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_0176da"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize" />
+
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginRight="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    card_view:cardCornerRadius="6dp"
+                    android:visibility="@{TextUtils.isEmpty(roles) || roles.contains(Permission.INDEMNITY_APP_OPERATOR.getValue()) || roles.contains(Permission.INDEMNITY_MANAGER.getValue()) || roles.contains(Permission.INDEMNITY_OPERATOR.getValue()) ? View.VISIBLE : View.GONE}" >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_20"
+                        android:layout_marginRight="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/margin_10">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/text_start_stop_restart_project"
+                                android:textSize="@dimen/textsize_16"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_10"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/text_no_upload_data_count"
+                                    android:textSize="@dimen/textsize_16"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    android:text="@{String.valueOf(presenter.operateCount)}"
+                                    android:textSize="@dimen/textsize_16"/>
+
+                                <ProgressBar
+                                    android:layout_width="@dimen/width_20"
+                                    android:layout_height="@dimen/height_20"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    style="?android:attr/progressBarStyleSmall"
+                                    android:visibility="@{presenter.operateUploading ? View.VISIBLE : View.GONE}"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_10"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/text_upload_failed_media_count"
+                                    android:textColor="@color/color_red_ff0000"
+                                    android:textSize="@dimen/textsize_16"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    android:textColor="@color/color_red_ff0000"
+                                    android:text="@{String.valueOf(presenter.operateMultiMediaCount)}"
+                                    android:textSize="@dimen/textsize_16"/>
+
+                                <ProgressBar
+                                    android:layout_width="@dimen/width_20"
+                                    android:layout_height="@dimen/height_20"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    style="?android:attr/progressBarStyleSmall"
+                                    android:visibility="@{presenter.operateMultiMediaUploading ? View.VISIBLE : View.GONE}"/>
+
+                                <ImageButton
+                                    android:layout_width="@dimen/width_20"
+                                    android:layout_height="@dimen/height_20"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    android:background="@null"
+                                    android:onClick="@{view -> presenter.uploadOperateMultiMedias(view)}"
+                                    android:src="@drawable/ic_upload_error_selector"
+                                    android:visibility="@{presenter.operateMultiMediaCount == 0 || presenter.operateMultiMediaUploading ? View.GONE : View.VISIBLE}" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:background="@null"
+                            android:layout_alignParentRight="true"
+                            android:visibility="@{presenter.operateCount == 0 || presenter.operateUploading ? View.GONE : View.VISIBLE}"
+                            android:src="@drawable/ic_upload_selector"
+                            android:onClick="@{view -> presenter.uploadOperates(view)}"/>
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginRight="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    card_view:cardCornerRadius="6dp"
+                    android:visibility="@{TextUtils.isEmpty(roles) || roles.contains(Permission.CONSTRUCTION_SCENE_MANAGER.getValue()) ? View.VISIBLE : View.GONE}" >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_20"
+                        android:layout_marginRight="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/margin_10">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/text_daily_patrol"
+                                android:textSize="@dimen/textsize_16"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_10"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/text_no_upload_data_count"
+                                    android:textSize="@dimen/textsize_16"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    android:text="@{String.valueOf(presenter.dailyPatrolCount)}"
+                                    android:textSize="@dimen/textsize_16"/>
+
+                                <ProgressBar
+                                    android:layout_width="@dimen/width_20"
+                                    android:layout_height="@dimen/height_20"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    style="?android:attr/progressBarStyleSmall"
+                                    android:visibility="@{presenter.dailyPatrolUploading ? View.VISIBLE : View.GONE}"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_10"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/text_upload_failed_media_count"
+                                    android:textColor="@color/color_red_ff0000"
+                                    android:textSize="@dimen/textsize_16"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    android:textColor="@color/color_red_ff0000"
+                                    android:text="@{String.valueOf(presenter.dailyPatrolMultiMediaCount)}"
+                                    android:textSize="@dimen/textsize_16"/>
+
+                                <ProgressBar
+                                    android:layout_width="@dimen/width_20"
+                                    android:layout_height="@dimen/height_20"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    style="?android:attr/progressBarStyleSmall"
+                                    android:visibility="@{presenter.dailyPatrolMultiMediaUploading ? View.VISIBLE : View.GONE}"/>
+
+                                <ImageButton
+                                    android:layout_width="@dimen/width_20"
+                                    android:layout_height="@dimen/height_20"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    android:background="@null"
+                                    android:onClick="@{view -> presenter.uploadPatrolMultiMedias(view, 1)}"
+                                    android:src="@drawable/ic_upload_error_selector"
+                                    android:visibility="@{presenter.dailyPatrolMultiMediaCount == 0 || presenter.dailyPatrolMultiMediaUploading ? View.GONE : View.VISIBLE}" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:background="@null"
+                            android:layout_alignParentRight="true"
+                            android:visibility="@{presenter.dailyPatrolCount == 0 || presenter.dailyPatrolUploading ? View.GONE : View.VISIBLE}"
+                            android:src="@drawable/ic_upload_selector"
+                            android:onClick="@{view -> presenter.uploadPatrols(view, 1)}"/>
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginRight="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    card_view:cardCornerRadius="6dp"
+                    android:visibility="@{TextUtils.isEmpty(roles) || roles.contains(Permission.INDEMNITY_APP_OPERATOR.getValue()) || roles.contains(Permission.INDEMNITY_MANAGER.getValue()) || roles.contains(Permission.INDEMNITY_OPERATOR.getValue()) ? View.VISIBLE : View.GONE}" >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_20"
+                        android:layout_marginRight="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/margin_10">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/text_indemnity_canter_patrol"
+                                android:textSize="@dimen/textsize_16"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_10"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/text_no_upload_data_count"
+                                    android:textSize="@dimen/textsize_16"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    android:text="@{String.valueOf(presenter.centerPatrolCount)}"
+                                    android:textSize="@dimen/textsize_16"/>
+
+                                <ProgressBar
+                                    android:layout_width="@dimen/width_20"
+                                    android:layout_height="@dimen/height_20"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    style="?android:attr/progressBarStyleSmall"
+                                    android:visibility="@{presenter.centerPatrolUploading ? View.VISIBLE : View.GONE}"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_10"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/text_upload_failed_media_count"
+                                    android:textColor="@color/color_red_ff0000"
+                                    android:textSize="@dimen/textsize_16"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    android:textColor="@color/color_red_ff0000"
+                                    android:text="@{String.valueOf(presenter.centerPatrolMultiMediaCount)}"
+                                    android:textSize="@dimen/textsize_16"/>
+
+                                <ProgressBar
+                                    android:layout_width="@dimen/width_20"
+                                    android:layout_height="@dimen/height_20"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    style="?android:attr/progressBarStyleSmall"
+                                    android:visibility="@{presenter.centerPatrolMultiMediaUploading ? View.VISIBLE : View.GONE}"/>
+
+                                <ImageButton
+                                    android:layout_width="@dimen/width_20"
+                                    android:layout_height="@dimen/height_20"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    android:background="@null"
+                                    android:onClick="@{view -> presenter.uploadPatrolMultiMedias(view, 2)}"
+                                    android:src="@drawable/ic_upload_error_selector"
+                                    android:visibility="@{presenter.centerPatrolMultiMediaCount == 0 || presenter.centerPatrolMultiMediaUploading ? View.GONE : View.VISIBLE}" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:background="@null"
+                            android:layout_alignParentRight="true"
+                            android:visibility="@{presenter.centerPatrolCount == 0 || presenter.centerPatrolUploading ? View.GONE : View.VISIBLE}"
+                            android:src="@drawable/ic_upload_selector"
+                            android:onClick="@{view -> presenter.uploadPatrols(view, 2)}"/>
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginRight="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:visibility="@{TextUtils.isEmpty(roles) || roles.contains(Permission.INDEMNITY_APP_OPERATOR.getValue()) || roles.contains(Permission.INDEMNITY_MANAGER.getValue()) || roles.contains(Permission.INDEMNITY_OPERATOR.getValue()) ? View.VISIBLE : View.GONE}"
+                    card_view:cardCornerRadius="6dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_20"
+                        android:layout_marginRight="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/margin_10">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/text_project_all_accept"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_10"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/text_no_upload_data_count"
+                                    android:textSize="@dimen/textsize_16" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    android:text="@{String.valueOf(presenter.acceptCount)}"
+                                    android:textSize="@dimen/textsize_16" />
+
+                                <ProgressBar
+                                    style="?android:attr/progressBarStyleSmall"
+                                    android:layout_width="@dimen/width_20"
+                                    android:layout_height="@dimen/height_20"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    android:visibility="@{presenter.acceptUploading ? View.VISIBLE : View.GONE}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_10"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/text_upload_failed_media_count"
+                                    android:textColor="@color/color_red_ff0000"
+                                    android:textSize="@dimen/textsize_16"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    android:textColor="@color/color_red_ff0000"
+                                    android:text="@{String.valueOf(presenter.acceptMultiMediaCount)}"
+                                    android:textSize="@dimen/textsize_16"/>
+
+                                <ProgressBar
+                                    android:layout_width="@dimen/width_20"
+                                    android:layout_height="@dimen/height_20"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    style="?android:attr/progressBarStyleSmall"
+                                    android:visibility="@{presenter.acceptMultiMediaUploading ? View.VISIBLE : View.GONE}"/>
+
+                                <ImageButton
+                                    android:layout_width="@dimen/width_20"
+                                    android:layout_height="@dimen/height_20"
+                                    android:layout_marginLeft="@dimen/margin_10"
+                                    android:background="@null"
+                                    android:onClick="@{view -> presenter.uploadAcceptMultiMedias(view)}"
+                                    android:src="@drawable/ic_upload_error_selector"
+                                    android:visibility="@{presenter.acceptMultiMediaCount == 0 || presenter.acceptMultiMediaUploading ? View.GONE : View.VISIBLE}" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:background="@null"
+                            android:onClick="@{view -> presenter.uploadAccepts(view)}"
+                            android:src="@drawable/ic_upload_selector"
+                            android:visibility="@{presenter.acceptCount == 0 || presenter.acceptUploading ? View.GONE : View.VISIBLE}" />
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+        </android.support.design.widget.CoordinatorLayout>
+
+    </LinearLayout>
+
+</layout>

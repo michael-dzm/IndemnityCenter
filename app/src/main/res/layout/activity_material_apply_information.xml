@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="duMaterialApply"
+            type="com.sh3h.dataprovider.data.entity.DUMaterialApply" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_0176da"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginRight="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:text="@string/text_material_information"
+                    android:textSize="@dimen/textsize_20" />
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginRight="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_5">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:minHeight="@dimen/height_40"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/padding_10"
+                            android:paddingRight="@dimen/padding_10">
+
+                            <TextView
+                                android:layout_width="@dimen/width_80"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="@string/text_apply_code"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:text="@{duMaterialApply.applyNumber}"
+                                android:textSize="@dimen/textsize_16" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:minHeight="@dimen/height_40"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/padding_10"
+                            android:paddingRight="@dimen/padding_10">
+
+                            <TextView
+                                android:layout_width="@dimen/width_80"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="@string/text_apply_time"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:text="@{duMaterialApply.operateTime}"
+                                android:textSize="@dimen/textsize_16" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:minHeight="@dimen/height_40"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/padding_10"
+                            android:paddingRight="@dimen/padding_10">
+
+                            <TextView
+                                android:layout_width="@dimen/width_80"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="@string/text_material_category"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:text="@{duMaterialApply.duMaterial.materialCategory}"
+                                android:textSize="@dimen/textsize_16" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:minHeight="@dimen/height_40"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/padding_10"
+                            android:paddingRight="@dimen/padding_10">
+
+                            <TextView
+                                android:layout_width="@dimen/width_80"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="@string/text_material_name"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:text="@{duMaterialApply.duMaterial.materialName}"
+                                android:textSize="@dimen/textsize_16" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:minHeight="@dimen/height_40"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/padding_10"
+                            android:paddingRight="@dimen/padding_10">
+
+                            <TextView
+                                android:layout_width="@dimen/width_80"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="@string/text_material_format"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:text="@{duMaterialApply.duMaterial.materialFormat}"
+                                android:textSize="@dimen/textsize_16" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:minHeight="@dimen/height_40"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/padding_10"
+                            android:paddingRight="@dimen/padding_10">
+
+                            <TextView
+                                android:layout_width="@dimen/width_80"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="@string/text_apply_count"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:text="@{String.valueOf(duMaterialApply.applyCount)}"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{duMaterialApply.duMaterial.materialUnit}"
+                                android:textSize="@dimen/textsize_16"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:minHeight="@dimen/height_40"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/padding_10"
+                            android:paddingRight="@dimen/padding_10">
+
+                            <TextView
+                                android:layout_width="@dimen/width_80"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="@string/text_confirm_material_count"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:text="@{String.valueOf(duMaterialApply.verifyCount)}"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{duMaterialApply.duMaterial.materialUnit}"
+                                android:textSize="@dimen/textsize_16"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginRight="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:text="@string/text_delivery_information"
+                    android:textSize="@dimen/textsize_20" />
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginRight="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/margin_5">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:minHeight="@dimen/height_40"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/padding_10"
+                            android:paddingRight="@dimen/padding_10">
+
+                            <TextView
+                                android:layout_width="@dimen/width_80"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="@string/text_construction_team2"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:text="@{duMaterialApply.constructionTeam}"
+                                android:textSize="@dimen/textsize_16" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:minHeight="@dimen/height_40"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/padding_10"
+                            android:paddingRight="@dimen/padding_10">
+
+                            <TextView
+                                android:id="@+id/textView4"
+                                android:layout_width="@dimen/width_80"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="@string/text_collar_department"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:text="@{duMaterialApply.applyDepartment}"
+                                android:textSize="@dimen/textsize_16" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:minHeight="@dimen/height_40"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/padding_10"
+                            android:paddingRight="@dimen/padding_10">
+
+                            <TextView
+                                android:layout_width="@dimen/width_80"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="@string/text_collar_man"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:text="@{duMaterialApply.applyPersion}"
+                                android:textSize="@dimen/textsize_16" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:minHeight="@dimen/height_40"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/padding_10"
+                            android:paddingRight="@dimen/padding_10">
+
+                            <TextView
+                                android:layout_width="@dimen/width_80"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="@string/text_collar_phone"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:text="@{duMaterialApply.contactPhone}"
+                                android:textSize="@dimen/textsize_16" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:minHeight="@dimen/height_40"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/padding_10"
+                            android:paddingRight="@dimen/padding_10">
+
+                            <TextView
+                                android:layout_width="@dimen/width_80"
+                                android:layout_height="wrap_content"
+                                android:gravity="right"
+                                android:text="@string/text_delivery_address"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_10"
+                                android:text="@{duMaterialApply.deliveryAddress}"
+                                android:textSize="@dimen/textsize_16" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

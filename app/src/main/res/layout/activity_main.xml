@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <data>
+        <import type="com.sh3h.indemnity.util.Constants"/>
+
+        <variable
+            name="presenter"
+            type="com.sh3h.indemnity.ui.main.MainPresenter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_0176da"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize" />
+
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_start_project"
+                        android:onClick="@{presenter.toStartProjectSearchActivity}"/>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_stop_project"
+                        android:onClick="@{(view) -> presenter.toProjectListActivity(view, Constants.FLAG_STOP_PROJECT)}" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_restart_project"
+                        android:onClick="@{(view) -> presenter.toProjectListActivity(view, Constants.FLAG_RESTART_PROJECT)}" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_daily_patrol"
+                        android:onClick="@{(view) -> presenter.toProjectListActivity(view, Constants.FLAG_DAILY_PATROL)}" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_indemnity_canter_patrol"
+                        android:onClick="@{(view) -> presenter.toProjectListActivity(view, Constants.FLAG_INDEMNITYCENTER_PATROL)}" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_material_apply"
+                        android:onClick="@{presenter.toMaterialApplyActivity}" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_material_confirm"
+                        android:onClick="@{presenter.toMaterialConfirmActivity}" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_material_search"
+                        android:onClick="@{presenter.toMaterialSearchActivity}" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_project_accept"
+                        android:onClick="@{presenter.toProjectAcceptActivity}" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_project_search"
+                        android:onClick="@{(view) -> presenter.toProjectListActivity(view, Constants.FLAG_SEARCH_PROJECT)}" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_address_manager"
+                        android:onClick="@{(view) -> presenter.toAddressManagerActivity(view)}" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_upload_manager"
+                        android:onClick="@{(view) -> presenter.toUploadManagerActivity(view)}" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </android.support.design.widget.CoordinatorLayout>
+
+    </LinearLayout>
+
+</layout>

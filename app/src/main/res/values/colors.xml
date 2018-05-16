@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0176da</color>
+    <color name="colorPrimaryDark">#0176da</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="color_0176da">#0176da</color>
+
+    <!-- 红 -->
+    <color name="color_red_ff0000">#ff0000</color>
+
+    <!-- 橙 -->
+    <color name="color_orange_ffa042">#ffa042</color>
+
+    <!-- 黄 -->
+    <color name="color_yellow_ffff37">#ffff37</color>
+    <color name="color_yellow_fafadc">#fafadc</color>
+
+    <!-- 绿 -->
+    <color name="color_green_00bb00">#00bb00</color>
+
+    <!-- 蓝 -->
+    <color name="color_bule_0000ff">#0000ff</color>
+    <color name="color_bule_0066ff">#0066ff</color>
+    <color name="color_bule_0099ff">#0099ff</color>
+    <color name="color_bule_00ccff">#00ccff</color>
+    <!--圆形按钮被选中的-->
+    <color name="circle_button_stroke_selected">#0083FE</color>
+
+    <!-- 紫 -->
+    <color name="color_bule_ae57a4">#ae57a4</color>
+
+    <!-- 黑 -->
+    <color name="color_black_000000">#000000</color>
+
+    <!-- 白 -->
+    <color name="color_white_ffffff">#ffffff</color>
+    <color name="color_white_f0f0f0">#f0f0f0</color>
+
+    <!-- 灰 -->
+    <color name="color_gray_adadad">#adadad</color>
+    <color name="color_gray_666E81">#666E81</color>
+    <color name="color_gray_767676">#767676</color>
+    <color name="color_gray_d2d2d2">#d2d2d2</color>
+    <color name="color_gray_979797">#979797</color>
+    <color name="color_gray_e3e3e3">#e3e3e3</color>
+
+    <color name="text_darkGrey">#424C55</color>
+    <color name="white">#ffffff</color>
+
+</resources>

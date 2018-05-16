@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">zxing</string>
+    <string name="activity_capture">扫描</string>
+</resources>

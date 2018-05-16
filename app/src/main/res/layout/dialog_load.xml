@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="@dimen/width_80"
+    android:layout_height="@dimen/height_80"
+    android:background="@drawable/bg_dialog_load"
+    android:gravity="center">
+
+    <ProgressBar
+        android:id="@+id/pb_dialog"
+        android:layout_width="@dimen/width_30"
+        android:layout_height="@dimen/height_30"
+        android:indeterminateDrawable="@drawable/anim_load" />
+    <TextView
+        android:id="@+id/tv_dialog_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="@dimen/margin_5"
+        android:text="加载中"/>
+
+</LinearLayout>

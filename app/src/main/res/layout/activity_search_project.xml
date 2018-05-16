@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="presenter"
+            type="com.sh3h.indemnity.ui.patrol.search.SearchPatrolPresenter"/>
+        <variable
+            name="startDate"
+            type="long"/>
+        <variable
+            name="endDate"
+            type="long"/>
+        <variable
+            name="constructionTypes"
+            type="java.util.List"/>
+        <variable
+            name="constructionContents"
+            type="java.util.List"/>
+        <variable
+            name="constructionResults"
+            type="java.util.List"/>
+        <variable
+            name="layoutManager"
+            type="android.support.v7.widget.LinearLayoutManager"/>
+        <variable
+            name="adapter"
+            type="com.sh3h.indemnity.ui.adapter.BaseRecyclerViewAdapter"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_0176da"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize" />
+
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/aci_appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_white_f0f0f0"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/height_45"
+                        android:paddingLeft="@dimen/padding_10"
+                        android:paddingRight="@dimen/padding_10">
+
+                        <TextView
+                            android:layout_width="@dimen/width_80"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="right"
+                            android:text="@string/text_start_date"
+                            android:textSize="@dimen/textsize_16" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/margin_10">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:text="@{startDate}"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <ImageButton
+                                android:id="@+id/btn_start_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/ic_calendar_selector"
+                                android:onClick="@{presenter.onCalendarClick}" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/divide_height_1"
+                                android:layout_alignBottom="@+id/btn_start_date"
+                                android:layout_marginTop="@dimen/margin_5"
+                                android:background="@color/color_gray_666E81" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/height_45"
+                        android:paddingLeft="@dimen/padding_10"
+                        android:paddingRight="@dimen/padding_10">
+
+                        <TextView
+                            android:layout_width="@dimen/width_80"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="right"
+                            android:text="@string/text_end_date"
+                            android:textSize="@dimen/textsize_16" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/margin_10">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:text="@{endDate}"
+                                android:textSize="@dimen/textsize_16" />
+
+                            <ImageButton
+                                android:id="@+id/btn_end_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/ic_calendar_selector"
+                                android:onClick="@{presenter.onCalendarClick}" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/divide_height_1"
+                                android:layout_alignBottom="@+id/btn_end_date"
+                                android:layout_marginTop="@dimen/margin_5"
+                                android:background="@color/color_gray_666E81" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:minHeight="@dimen/height_45"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/padding_10"
+                        android:paddingRight="@dimen/padding_10">
+
+                        <TextView
+                            android:layout_width="@dimen/width_80"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="@string/text_construction_type"
+                            android:textSize="@dimen/textsize_16" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/margin_10">
+
+                            <android.support.v7.widget.AppCompatSpinner
+                                android:id="@+id/sp_construction_type"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:entries="@{constructionTypes}"
+                                android:onItemSelected="@{presenter.onItemSelected}" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/divide_height_1"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginBottom="@dimen/margin_5"
+                                android:background="@color/color_gray_666E81" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:minHeight="@dimen/height_45"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/padding_10"
+                        android:paddingRight="@dimen/padding_10">
+
+                        <TextView
+                            android:layout_width="@dimen/width_80"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="@string/text_construction_content"
+                            android:textSize="@dimen/textsize_16" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/margin_10">
+
+                            <android.support.v7.widget.AppCompatSpinner
+                                android:id="@+id/sp_construction_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:entries="@{constructionContents}"
+                                android:onItemSelected="@{presenter.onItemSelected}" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/divide_height_1"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginBottom="@dimen/margin_5"
+                                android:background="@color/color_gray_666E81" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:minHeight="@dimen/height_45"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/padding_10"
+                        android:paddingRight="@dimen/padding_10">
+
+                        <TextView
+                            android:layout_width="@dimen/width_80"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="@string/text_construction_result"
+                            android:textSize="@dimen/textsize_16" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/margin_10">
+
+                            <android.support.v7.widget.AppCompatSpinner
+                                android:id="@+id/sp_construction_result"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:entries="@{constructionResults}"
+                                android:onItemSelected="@{presenter.onItemSelected}" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/divide_height_1"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginBottom="@dimen/margin_5"
+                                android:background="@color/color_gray_666E81" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_10"
+                        android:layout_marginLeft="@dimen/margin_30"
+                        android:layout_marginRight="@dimen/margin_30"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:background="@drawable/button_selector"
+                        android:gravity="center"
+                        android:onClick="@{presenter.onSearchClick}"
+                        android:text="@string/text_search"
+                        android:textColor="@color/button_text_selector" />
+
+                </LinearLayout>
+
+            </android.support.design.widget.AppBarLayout>
+
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/swipe_refresh_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#EFEFF4"
+                android:setEnabled="@{false}"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none"
+                    app:layoutManager="@{layoutManager}"
+                    app:adapter="@{adapter}" />
+
+            </android.support.v4.widget.SwipeRefreshLayout>
+
+        </android.support.design.widget.CoordinatorLayout>
+
+    </LinearLayout>
+
+</layout>

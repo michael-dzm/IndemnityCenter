@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sh3h.indemnity">
+
+    <!-- Normal Permissions 不需要动态申请-->
+    <!-- 网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Normal Permissions 必须动态申请-->
+    <!-- 手机状态权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- SDCard读写权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 相机权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 地理位置权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:name=".MainApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.StatusBar">
+        <activity android:name=".ui.main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.project.start.StartProjectActivity"
+            android:label="@string/activity_start_project"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.project.stop.StopProjectActivity"
+            android:label="@string/activity_stop_project"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".ui.project.restart.RestartProjectActivity"
+            android:label="@string/activity_restart_project"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.patrol.PatrolActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.project.start.search.StartProjectSearchActivity"
+            android:label="@string/activity_start_project_search"
+            android:screenOrientation="portrait" >
+            <intent-filter >
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.project.list.ProjectListActivity"
+            android:label="@string/activity_project_list"
+            android:screenOrientation="portrait" >
+            <intent-filter >
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.accept.ProjectAcceptListActivity"
+            android:label="@string/activity_project_list"
+            android:screenOrientation="portrait" >
+            <intent-filter >
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.material.apply.MaterialApplyActivity"
+            android:label="@string/activity_material_apply"
+            android:screenOrientation="portrait" >
+            <intent-filter >
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.material.address.AddressManagerActivity"
+            android:label="@string/activity_address_manager"
+            android:screenOrientation="portrait" >
+            <intent-filter >
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.material.confirm.MaterialConfirmActivity"
+            android:label="@string/activity_material_confirm_information"
+            android:screenOrientation="portrait" >
+            <intent-filter >
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.material.search.apply.info.MaterialApplyInformationActivity"
+            android:label="@string/activity_material_apply_information"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".ui.material.search.confirm.info.MaterialConfirmInformationActivity"
+            android:label="@string/activity_material_list"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".ui.accept.budget.BudgetAcceptListActivity"
+            android:label="@string/activity_project_accept"
+            android:screenOrientation="portrait" >
+            <intent-filter >
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.accept.branch.AcceptBranchLRActivity"
+            android:label="@string/activity_project_accept"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.accept.project.AcceptProjectLRActivity"
+            android:label="@string/activity_project_accept"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.patrol.search.SearchPatrolActivity"
+            android:label="@string/activity_project_patrol_search"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.material.search.MaterialSearchActivity"
+            android:label="@string/activity_material_search"
+            android:screenOrientation="portrait">
+            <intent-filter >
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.setting.SettingActivity"
+            android:label="@string/activity_setting"
+            android:screenOrientation="portrait">
+            <intent-filter >
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.upload.UploadManagerActivity"
+            android:label="@string/activity_upload_manager"
+            android:screenOrientation="portrait">
+            <intent-filter >
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.multimedia.brower.MultimediaBrowerActivity"
+            android:label="@string/activity_multimedia_brower"
+            android:screenOrientation="portrait"
+            android:theme="@style/DialogTheme">
+        </activity>
+        <activity android:name=".ui.accept.construction.AcceptConstructionLRActivity"
+            android:label="@string/activity_construction_accept"
+            android:screenOrientation="portrait" />
+
+        <service android:name=".service.SyncService"/>
+
+        <receiver android:name=".receiver.NetWorkReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        
+        <provider
+            android:authorities="com.sh3h.indemnity.fileprovider"
+            android:name="android.support.v4.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
+    </application>
+
+</manifest>

@@ -1,0 +1,88 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    
+    <style name="AppTheme.StatusBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+    <style name="Theme.ToolBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="actionOverflowButtonStyle">@style/ToolButton.Overflow</item>
+    </style>
+
+    <style name="ToolButton.Overflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
+        <item name="android:src">@mipmap/ic_menu_more_overflow</item>
+    </style>
+
+    <style name="OverFlowMenuTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 设置Menu菜单的背景色 -->
+        <item name="android:itemBackground">@android:color/white</item>
+        <!-- 设置Menu菜单的字体颜色 -->
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <!-- 设置Menu窗口不覆盖Toolbar视图 -->
+        <item name="overlapAnchor">false</item>
+    </style>
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFrame">@null</item>移除边框
+        <item name="android:windowNoTitle">true</item>去除顶部标题栏
+        <item name="android:windowIsTranslucent">true</item>窗体透明
+        <item name="android:background">@android:color/white</item>窗体背景
+        <item name="android:windowBackground">@android:color/transparent</item>窗体背景透明
+        <item name="android:windowIsFloating">true</item>窗体是否浮动
+        <item name="android:backgroundDimEnabled">true</item>背景是否昏暗
+        <item name="android:backgroundDimAmount">0.6</item>昏暗数量
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
+
+    <style name="RaidoButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:button">@null</item>
+        <item name="android:textSize">@dimen/textsize_14</item>
+        <item name="android:textColor">@color/radio_button_text_selecter</item>
+    </style>
+
+    <style name="MyBudgeTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">?attr/colorPrimary</item>
+        <item name="tabSelectedTextColor">@color/text_darkGrey</item>
+        <item name="tabTextColor">@color/color_gray_d2d2d2</item>
+        <item name="tabBackground">@color/white</item>
+    </style>
+
+    <style name="card_view_line">
+        <item name="android:layout_height">@dimen/height_1</item>
+        <item name="android:layout_marginTop">@dimen/margin_5</item>
+        <item name="android:background">@color/color_gray_d2d2d2</item>
+    </style>
+
+    <!--圆形按钮效果-->
+    <style name="circle_text_button">
+        <item name="android:layout_width">@dimen/width_40</item>
+        <item name="android:layout_height">@dimen/width_40</item>
+        <item name="android:textSize">@dimen/textsize_12</item>
+    </style>
+
+    <style name="progressDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowIsTranslucent">true</item>窗体透明
+        <item name="android:background">@android:color/transparent</item>背景
+        <item name="android:windowBackground">@android:color/transparent</item>窗体背景
+        <item name="android:windowNoTitle">true</item>去除顶部标题栏
+        <item name="android:windowIsFloating">true</item>窗体是否浮动
+        <item name="android:backgroundDimEnabled">true</item>背景是否昏暗
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
+
+</resources>

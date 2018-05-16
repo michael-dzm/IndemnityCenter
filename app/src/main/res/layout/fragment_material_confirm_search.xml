@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="presenter"
+            type="com.sh3h.indemnity.ui.material.search.confirm.MaterialConfirmSearchPresenter" />
+
+        <variable
+            name="layoutManager"
+            type="android.support.v7.widget.LinearLayoutManager" />
+
+        <variable
+            name="adapter"
+            type="com.sh3h.indemnity.ui.adapter.BaseRecyclerViewAdapter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/height_40"
+                android:paddingLeft="@dimen/padding_10"
+                android:paddingRight="@dimen/padding_10">
+
+                <TextView
+                    android:layout_width="@dimen/width_80"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="right"
+                    android:text="@string/text_start_date"
+                    android:textSize="@dimen/textsize_16" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_10">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@{presenter.mStartTime}"
+                        android:textSize="@dimen/textsize_16" />
+
+                    <ImageButton
+                        android:id="@+id/btn_start_project_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_calendar_selector"
+                        android:onClick="@{presenter.onCalendarClick}" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/divide_height_1"
+                        android:layout_alignBottom="@+id/btn_start_project_date"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:background="@color/color_gray_666E81" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/height_40"
+                android:paddingLeft="@dimen/padding_10"
+                android:paddingRight="@dimen/padding_10">
+
+                <TextView
+                    android:layout_width="@dimen/width_80"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="right"
+                    android:text="@string/text_end_date"
+                    android:textSize="@dimen/textsize_16" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_10">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@{presenter.mEndTime}"
+                        android:textSize="@dimen/textsize_16" />
+
+                    <ImageButton
+                        android:id="@+id/btn_end_project_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/ic_calendar_selector"
+                        android:onClick="@{presenter.onCalendarClick}" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/divide_height_1"
+                        android:layout_alignBottom="@+id/btn_end_project_date"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:background="@color/color_gray_666E81" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_10"
+                android:layout_marginLeft="@dimen/margin_30"
+                android:layout_marginRight="@dimen/margin_30"
+                android:layout_marginTop="@dimen/margin_20"
+                android:background="@drawable/button_selector"
+                android:gravity="center"
+                android:onClick="@{presenter.onSearchClick}"
+                android:text="@string/text_search"
+                android:textColor="@color/button_text_selector" />
+
+        </LinearLayout>
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#EFEFF4">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_budget"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:adapter="@{adapter}"
+                app:layoutManager="@{layoutManager}" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/btn_floating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="16dp"
+                android:src="@mipmap/ic_arrow_up_48px"
+                android:visibility="gone" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+</layout>

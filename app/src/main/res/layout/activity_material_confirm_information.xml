@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="duMaterialVerify"
+            type="com.sh3h.dataprovider.data.entity.DUMaterialVerify" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_0176da"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10"
+                android:layout_marginRight="@dimen/margin_10"
+                android:layout_marginTop="@dimen/margin_10"
+                android:text="@string/text_material_information"
+                android:textSize="@dimen/textsize_20" />
+
+            <android.support.v7.widget.CardView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_10"
+                android:layout_marginRight="@dimen/margin_10"
+                android:layout_marginTop="@dimen/margin_5">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:minHeight="@dimen/height_40"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/padding_10"
+                        android:paddingRight="@dimen/padding_10">
+
+                        <TextView
+                            android:layout_width="@dimen/width_80"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="@string/text_delivery_code"
+                            android:textSize="@dimen/textsize_16" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_10"
+                            android:text="@{duMaterialVerify.deliveryNumber}"
+                            android:textSize="@dimen/textsize_16" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:minHeight="@dimen/height_40"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/padding_10"
+                        android:paddingRight="@dimen/padding_10">
+
+                        <TextView
+                            android:layout_width="@dimen/width_80"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="@string/text_confirm_time"
+                            android:textSize="@dimen/textsize_16" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_10"
+                            android:text="@{duMaterialVerify.operateTime}"
+                            android:textSize="@dimen/textsize_16" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:minHeight="@dimen/height_40"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/padding_10"
+                        android:paddingRight="@dimen/padding_10">
+
+                        <TextView
+                            android:layout_width="@dimen/width_80"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="@string/text_material_category"
+                            android:textSize="@dimen/textsize_16" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_10"
+                            android:text="@{duMaterialVerify.duMaterial.materialCategory}"
+                            android:textSize="@dimen/textsize_16" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:minHeight="@dimen/height_40"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/padding_10"
+                        android:paddingRight="@dimen/padding_10">
+
+                        <TextView
+                            android:layout_width="@dimen/width_80"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="@string/text_material_name"
+                            android:textSize="@dimen/textsize_16" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_10"
+                            android:text="@{duMaterialVerify.duMaterial.materialName}"
+                            android:textSize="@dimen/textsize_16" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:minHeight="@dimen/height_40"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/padding_10"
+                        android:paddingRight="@dimen/padding_10">
+
+                        <TextView
+                            android:layout_width="@dimen/width_80"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="@string/text_material_format"
+                            android:textSize="@dimen/textsize_16" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_10"
+                            android:text="@{duMaterialVerify.duMaterial.materialFormat}"
+                            android:textSize="@dimen/textsize_16" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:minHeight="@dimen/height_40"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/padding_10"
+                        android:paddingRight="@dimen/padding_10">
+
+                        <TextView
+                            android:layout_width="@dimen/width_80"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="@string/text_confirm_count"
+                            android:textSize="@dimen/textsize_16" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin_10"
+                            android:text="@{String.valueOf(duMaterialVerify.verifyCount)}"
+                            android:textSize="@dimen/textsize_16" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{duMaterialVerify.duMaterial.materialUnit}"
+                            android:textSize="@dimen/textsize_16"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_40"
+                android:paddingLeft="@dimen/padding_10"
+                android:paddingRight="@dimen/padding_10">
+
+                <TextView
+                    android:layout_width="@dimen/width_80"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="right"
+                    android:text="@string/text_Bill_photo"
+                    android:textSize="@dimen/textsize_16" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divide_height_2"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/dotted_line"
+                    android:layerType="software" />
+
+            </RelativeLayout>
+
+            <FrameLayout
+                android:id="@+id/multimedia_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>
